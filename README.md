@@ -8,7 +8,7 @@ This is a hacky solution I made for streaming UT2004 cups and consists of three 
 - json file to store data
 - python script that lets you update the data with a couple of quick commands
 
-This solution lets me update the current series score and map results on the fly and without looking up map names or anything.
+This solution lets me update the current series score and map results on the fly and without looking up map names or anything. You don't need to reload the source or anything after updating data, overlay will update automatically in a couple of seconds.
 
 Overlay data consists of 4 updatable main components (white text below), each updated with a separate command:
 ![image](https://github.com/Aryss/MatchInfoOverlay/assets/7546239/9512a390-a940-40e8-b446-a2b6877a53fc)
