@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="5">
+  <title>Scores</title>
+  <style>
+    body {
+      margin: 10px;
+      overflow: hidden;
+      color: #fff;
+      font-size: 18px;
+      margin-left: 40px;
+      font-family: "Bahnschrift", Calibri, Arial, sans-serif;
+      text-shadow: 3px 3px 4px black;
+    }
+    
+    .highlight{
+        color: #efe00c;
+    }
+
+  </style>  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="textBlocksContainer">
+  <!-- Text blocks will be dynamically added here -->
+</div>
+
+<script>
+  function loadTextBlocks() {
+    $.getJSON('data.json', function(data) {
+      // Clear existing text blocks
+      $('#textBlocksContainer').empty();
+
+      // Add new text blocks from JSON
+      data.blocks.forEach(function(block, index) {
+        $('#textBlocksContainer').append('<div class="textBlock">' + 
+          '<span class="highlight"><strong>Match:</strong></span> ' + block.players + '<br>' +
+          '<span class="highlight"><strong>Score (BO'+block.bo+'):</strong></span> ' + block.series_score + ', ' + block.match_info + '<br>' +
+          '<strong></strong> ' + block.map1results + '<br>' +
+          '<strong></strong> ' + block.map2results + '<br>' +
+          '<strong></strong> ' + block.map3results + '<br>' +
+          '<strong></strong> ' + block.map4results + '<br>' +          
+          '<strong></strong> ' + block.map5results + '<br>' +                    
+          '<strong></strong> ' + block.map6results + '<br>' +                    
+          '</div>');
+      });
+    });
+  }
+
+  // Initial load
+  loadTextBlocks();
+
+  // Refresh every 5 seconds
+  setInterval(function() {
+    loadTextBlocks();
+  }, 5000);
+</script>
+
+</body>
+</html>
